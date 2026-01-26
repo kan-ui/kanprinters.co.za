@@ -247,7 +247,7 @@ export default function Home() {
               <ul className="space-y-3 text-gray-600 dark:text-gray-300">
                 <li className="flex items-start">
                   <span className="text-indigo-600 mr-2">•</span>
-                  <span>People-centred Growth: Upskilling staff, profit-sharing, inclusive hiring</span>
+                  <span>People-centred Growth: Upskilling staff, inclusive hiring</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-indigo-600 mr-2">•</span>
