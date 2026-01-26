@@ -16,6 +16,18 @@ export default defineType({
       title: 'Icon Emoji',
       type: 'string',
       description: 'Emoji icon for the service (e.g., 🎨, 🖌️)',
+      initialValue: '🎨',
+    }),
+    defineField({
+      name: 'category',
+      title: 'Service Category',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Core Printing Services', value: 'core' },
+          { title: 'Advanced & Specialized Services', value: 'advanced' },
+        ],
+      },
     }),
     defineField({
       name: 'description',
