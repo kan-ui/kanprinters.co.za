@@ -120,7 +120,7 @@ export const contactInfoQuery = groq`*[_type == "contactInfo"][0] {
 export const socialMediaQuery = groq`*[_type == "socialMedia"][0] {
   _id,
   facebook,
-  twitter,
+  tiktok,
   linkedin,
   instagram,
   youtube,
