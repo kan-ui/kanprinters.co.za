@@ -4,12 +4,6 @@ export default defineType({
   name: 'ctaSection',
   title: 'Call-to-Action Section',
   type: 'document',
-  __experimental_actions: [
-    // 'create',
-    'update',
-    // 'delete',
-    'publish',
-  ],
   fields: [
     defineField({
       name: 'headline',
