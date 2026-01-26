@@ -20,7 +20,7 @@ export default function Home() {
         >
           We blend traditional screen-printing expertise with modern digital technologies. 
           From creative design to final production, we handle any printing job with precision, 
-          craftsmanship, and quality. Contact us for a free quotation tailored to your needs.
+          craftsmanship, and quality. Contact us for a free quotation7 tailored to your needs.
         </SectionTitle>
 
         <Benefits data={benefitOne} />
