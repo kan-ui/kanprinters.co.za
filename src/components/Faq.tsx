@@ -1,14 +1,40 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "@/components/Container";
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
 
-export const Faq = () => {
+interface FaqProps {
+  faqData?: Array<{
+    question: string;
+    answer: string;
+  }>;
+}
+
+export const Faq = ({ faqData }: FaqProps) => {
+  const [faqs, setFaqs] = useState(faqData || faqdata);
+
+  useEffect(() => {
+    if (!faqData) {
+      // Client-side fetch if needed
+      fetch('/api/faqs')
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.length > 0) {
+            setFaqs(data);
+          }
+        })
+        .catch(() => {
+          // Fallback to default
+          setFaqs(faqdata);
+        });
+    }
+  }, [faqData]);
+  
   return (
     <Container className="!p-0">
       <div className="w-full max-w-2xl p-2 mx-auto rounded-2xl">
-        {faqdata.map((item, index) => (
+        {faqs.map((item: any, index: number) => (
           <div key={item.question} className="mb-5">
             <Disclosure>
               {({ open }) => (
