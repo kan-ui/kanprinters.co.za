@@ -10,6 +10,43 @@ export default defineType({
       title: 'Founding Story',
       type: 'text',
       description: 'The story of how the company was founded',
+      initialValue: 'Founded in 2000 by brothers Mario and Bradley Kanasashi, Kan Screenprinters have grown from a family garage in Manenberg into a trusted printing hub in Lansdowne.',
+    }),
+    defineField({
+      name: 'journeyItems',
+      title: 'Journey Timeline',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+              description: 'e.g., "Origins", "Growth", "Innovation"',
+            },
+            {
+              name: 'text',
+              title: 'Text',
+              type: 'text',
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'identity',
+      title: 'Company Identity',
+      type: 'text',
+      description: 'Description of company identity and values',
+    }),
+    defineField({
+      name: 'teamRoles',
+      title: 'Team Roles',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'List of team roles (e.g., "Mario Kanasashi – Founder & Managing Director")',
     }),
     defineField({
       name: 'founders',
