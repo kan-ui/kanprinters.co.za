@@ -156,3 +156,68 @@ export const ctaSectionQuery = groq`*[_type == "ctaSection"][0] {
   primaryCTA,
   secondaryCTA
 }`
+
+// Benefit section queries
+export const benefitSectionsQuery = groq`*[_type == "benefitSection"] | order(order asc) {
+  _id,
+  title,
+  description,
+  image,
+  imagePosition,
+  bullets,
+  order
+}`
+
+// Target market queries
+export const targetMarketsQuery = groq`*[_type == "targetMarket"] | order(order asc) {
+  _id,
+  title,
+  description,
+  order
+}`
+
+// Section content queries
+export const sectionContentQuery = groq`*[_type == "sectionContent" && sectionId == $sectionId][0] {
+  _id,
+  sectionId,
+  preTitle,
+  title,
+  description,
+  content
+}`
+
+export const allSectionContentQuery = groq`*[_type == "sectionContent"] | order(sectionId asc) {
+  _id,
+  sectionId,
+  preTitle,
+  title,
+  description,
+  content
+}`
+
+// Video content queries
+export const videoContentQuery = groq`*[_type == "videoContent" && section == $section][0] {
+  _id,
+  videoId,
+  title,
+  description,
+  thumbnail,
+  section
+}`
+
+export const allVideoContentQuery = groq`*[_type == "videoContent"] | order(section asc) {
+  _id,
+  videoId,
+  title,
+  description,
+  thumbnail,
+  section
+}`
+
+// Future vision queries
+export const futureVisionQuery = groq`*[_type == "futureVision"] | order(category asc) {
+  _id,
+  category,
+  title,
+  items
+}`
