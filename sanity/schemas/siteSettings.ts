@@ -27,6 +27,13 @@ export default defineType({
       initialValue: 'Kan Screenprinters',
     }),
     defineField({
+      name: 'shortName',
+      title: 'Short Company Name',
+      type: 'string',
+      description: 'Shortened version for display',
+      initialValue: 'Kan Printers',
+    }),
+    defineField({
       name: 'tagline',
       title: 'Tagline',
       type: 'string',
