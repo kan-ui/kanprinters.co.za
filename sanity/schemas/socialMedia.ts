@@ -12,10 +12,10 @@ export default defineType({
       initialValue: 'https://www.facebook.com/pages/Kan-Screenprinters/512399395488737',
     }),
     defineField({
-      name: 'twitter',
-      title: 'Twitter/X URL',
+      name: 'tiktok',
+      title: 'TikTok URL',
       type: 'url',
-      initialValue: 'https://twitter.com/@kanscreen',
+      description: 'TikTok profile URL',
     }),
     defineField({
       name: 'linkedin',
@@ -43,11 +43,11 @@ export default defineType({
   preview: {
     select: {
       facebook: 'facebook',
-      twitter: 'twitter',
+      tiktok: 'tiktok',
       linkedin: 'linkedin',
     },
-    prepare({ facebook, twitter, linkedin }) {
-      const links = [facebook, twitter, linkedin].filter(Boolean)
+    prepare({ facebook, tiktok, linkedin }) {
+      const links = [facebook, tiktok, linkedin].filter(Boolean)
       return {
         title: 'Social Media Links',
         subtitle: links.length > 0 ? links.join(', ') : 'No links configured',
