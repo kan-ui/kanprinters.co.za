@@ -22,8 +22,13 @@ import {
 } from "@/lib/sanity.api";
 import { benefitOne, benefitTwo } from "@/components/data";
 
+// Add revalidation to ensure fresh data
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export default async function Home() {
-  // Fetch all Sanity data
+  // Fetch all Sanity data with error handling
+  console.log('🔄 Fetching data from Sanity...')
+  
   const [
     heroData,
     benefitSections,
@@ -41,7 +46,7 @@ export default async function Home() {
     testimonialsSection,
     futureVisionSection,
     faqSection,
-  ] = await Promise.all([
+  ] = await Promise.allSettled([
     getHeroSection(),
     getBenefitSections(),
     getTargetMarkets(),
@@ -58,7 +63,18 @@ export default async function Home() {
     getSectionContent("testimonials"),
     getSectionContent("future-vision"),
     getSectionContent("faq"),
-  ]);
+  ]).then(results => results.map(result => 
+    result.status === 'fulfilled' ? result.value : null
+  ));
+  
+  console.log('✅ Data fetch completed')
+
+  // Log what data we received
+  if (heroData) {
+    console.log('📝 Using Sanity data for hero section')
+  } else {
+    console.warn('⚠️ Using fallback data for hero section')
+  }
 
   // Fallback to hardcoded data if Sanity data is not available
   const hero = heroData || {
@@ -142,6 +158,7 @@ export default async function Home() {
   const values = brandValues && brandValues.length > 0 
     ? brandValues.map((v: any, i: number) => ({ ...v, delay: i * 100 }))
     : defaultValues;
+
   return (
     <Container>
       <Hero heroData={hero} />
