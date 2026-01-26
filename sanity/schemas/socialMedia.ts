@@ -4,12 +4,6 @@ export default defineType({
   name: 'socialMedia',
   title: 'Social Media Links',
   type: 'document',
-  __experimental_actions: [
-    // 'create',
-    'update',
-    // 'delete',
-    'publish',
-  ],
   fields: [
     defineField({
       name: 'facebook',
