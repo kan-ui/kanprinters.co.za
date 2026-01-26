@@ -10,6 +10,11 @@ import socialMedia from './socialMedia'
 import heroSection from './heroSection'
 import companyHistory from './companyHistory'
 import ctaSection from './ctaSection'
+import benefitSection from './benefitSection'
+import targetMarket from './targetMarket'
+import sectionContent from './sectionContent'
+import videoContent from './videoContent'
+import futureVision from './futureVision'
 
 export const schemaTypes = [
   // Site-wide settings
@@ -19,6 +24,12 @@ export const schemaTypes = [
   heroSection,
   companyHistory,
   ctaSection,
+  // Page sections
+  benefitSection,
+  targetMarket,
+  sectionContent,
+  videoContent,
+  futureVision,
   // Content types
   service,
   portfolio,
