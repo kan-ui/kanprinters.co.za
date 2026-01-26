@@ -4,8 +4,6 @@ import React from "react";
 import { Container } from "@/components/Container";
 
 export function Footer() {
-  const navigation = ["Product", "Features", "Pricing", "Company", "Blog"];
-  const legal = ["Terms", "Privacy", "Legal"];
   return (
     <div className="relative">
       <Container>
@@ -15,23 +13,34 @@ export function Footer() {
               {" "}
               <Link
                 href="/"
-                className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100"
+                className="flex items-center"
               >
                 <Image
-                  src="/img/logo.svg"
-                  alt="N"
-                  width="32"
-                  height="32"
-                  className="w-8"
+                  src="/Logo/Resize the Kan Print.png"
+                  alt="Kan Printers & Signs Logo"
+                  width="280"
+                  height="100"
+                  className="h-20 md:h-24 w-auto object-contain"
+                  quality={100}
                 />
-                <span>Nextly</span>
               </Link>
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-              Nextly is a free landing page & marketing website template for
-              startups and indie projects. Its built with Next.js & TailwindCSS.
-              And its completely open-source.
+              Founded in 2000 by brothers Mario and Bradley Kanasashi, Kan Screenprinters 
+              have grown from a family garage in Manenberg into a trusted printing hub in Lansdowne. 
+              Rooted in craftsmanship, loyalty, and community trust, we blend traditional 
+              screen-printing expertise with modern digital technologies.
+            </div>
+            
+            <div className="max-w-md mt-4 text-sm text-gray-500 dark:text-gray-400">
+              <p className="font-semibold mb-2">Contact Us:</p>
+              <p>Unit 14 Regency Park</p>
+              <p>6 Induland Crescent, Lansdowne</p>
+              <p>Cape Town</p>
+              <p className="mt-2">Tel: 021 691 0170 / 021 691 0168</p>
+              <p>VOIP: 021 007 1004 / 087 701 2066</p>
+              <p>Email: <a href="mailto:kanprinters@mweb.co.za" className="text-indigo-600 hover:underline">kanprinters@mweb.co.za</a></p>
             </div>
 
             <div className="mt-5">
@@ -53,58 +62,90 @@ export function Footer() {
 
           <div>
             <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
-              {navigation.map((item, index) => (
-                <Link
-                  key={index}
-                  href="/"
-                  className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
-                >
-                  {item}
-                </Link>
-              ))}
+              <Link
+                href="/#services"
+                className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
+              >
+                Services
+              </Link>
+              <Link
+                href="/#portfolio"
+                className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
+              >
+                Portfolio
+              </Link>
+              <Link
+                href="/#about"
+                className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
+              >
+                About Us
+              </Link>
+              <Link
+                href="/#contact"
+                className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
+              >
+                Contact
+              </Link>
+              <Link
+                href="/#faq"
+                className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
+              >
+                FAQ
+              </Link>
             </div>
           </div>
           <div>
             <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
-              {legal.map((item, index) => (
-                <Link
-                  key={index}
-                  href="/"
-                  className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
-                >
-                  {item}
-                </Link>
-              ))}
+              <p className="w-full px-4 py-2 text-gray-500 dark:text-gray-300 font-semibold">
+                Services
+              </p>
+              <p className="w-full px-4 py-2 text-sm text-gray-500 dark:text-gray-400">
+                Screen Printing
+              </p>
+              <p className="w-full px-4 py-2 text-sm text-gray-500 dark:text-gray-400">
+                Pad Printing
+              </p>
+              <p className="w-full px-4 py-2 text-sm text-gray-500 dark:text-gray-400">
+                Digital Printing
+              </p>
+              <p className="w-full px-4 py-2 text-sm text-gray-500 dark:text-gray-400">
+                Laser Engraving
+              </p>
+              <p className="w-full px-4 py-2 text-sm text-gray-500 dark:text-gray-400">
+                Sublimation
+              </p>
+              <p className="w-full px-4 py-2 text-sm text-gray-500 dark:text-gray-400">
+                Heat Transfer
+              </p>
             </div>
           </div>
           <div className="">
             <div>Follow us</div>
             <div className="flex mt-5 space-x-5 text-gray-400 dark:text-gray-500">
               <a
-                href="https://twitter.com/web3templates"
+                href="https://twitter.com/@kanscreen"
                 target="_blank"
                 rel="noopener"
+                aria-label="Twitter"
               >
                 <span className="sr-only">Twitter</span>
                 <Twitter />
               </a>
               <a
-                href="https://facebook.com/web3templates"
+                href="https://www.facebook.com/pages/Kan-Screenprinters/512399395488737"
                 target="_blank"
                 rel="noopener"
+                aria-label="Facebook"
               >
                 <span className="sr-only">Facebook</span>
                 <Facebook />
               </a>
               <a
-                href="https://instagram.com/web3templates"
+                href="http://za.linkedin.com/pub/kan-printers/4a/b50/a0b"
                 target="_blank"
                 rel="noopener"
+                aria-label="LinkedIn"
               >
-                <span className="sr-only">Instagram</span>
-                <Instagram />
-              </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener">
                 <span className="sr-only">Linkedin</span>
                 <Linkedin />
               </a>
@@ -113,18 +154,9 @@ export function Footer() {
         </div>
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
-          Copyright © {new Date().getFullYear()}. Made with ♥ by{" "}
-          <a href="https://web3templates.com/" target="_blank" rel="noopener">
-            Web3Templates.
-          </a>{" "}
-          Illustrations from{" "}
-          <a href="https://www.glazestock.com/" target="_blank" rel="noopener ">
-            Glazestock
-          </a>
+          Copyright © {new Date().getFullYear()} Kan Screenprinters. All rights reserved.
         </div>
       </Container>
-      {/* Do not remove this */}
-      <Backlink />
     </div>
   );
 }
