@@ -17,7 +17,7 @@ This document maps all Sanity schemas to the actual components and page data in 
 
 3. **socialMedia** - Social media links
    - Maps to: `src/components/Footer.tsx`
-   - Fields: facebook, twitter, linkedin, instagram, youtube, whatsapp
+   - Fields: facebook, tiktok, linkedin, instagram, youtube, whatsapp
    - **Pre-filled with actual URLs**
 
 4. **heroSection** - Hero section content
