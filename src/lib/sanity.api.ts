@@ -25,7 +25,12 @@ import {
 
 // Service functions
 export async function getServices() {
-  return await client.fetch(servicesQuery)
+  try {
+    return await client.fetch(servicesQuery)
+  } catch (error) {
+    console.error('Error fetching services:', error)
+    return null
+  }
 }
 
 // Portfolio functions
@@ -78,7 +83,18 @@ export async function getSocialMedia() {
 
 // Hero section functions
 export async function getHeroSection() {
-  return await client.fetch(heroSectionQuery)
+  try {
+    const data = await client.fetch(heroSectionQuery)
+    if (data) {
+      console.log('✅ Hero section data fetched from Sanity')
+    } else {
+      console.warn('⚠️ No hero section data found in Sanity')
+    }
+    return data
+  } catch (error) {
+    console.error('❌ Error fetching hero section:', error)
+    return null
+  }
 }
 
 // Company history functions
@@ -93,7 +109,16 @@ export async function getCTASection() {
 
 // Benefit section functions
 export async function getBenefitSections() {
-  return await client.fetch(benefitSectionsQuery)
+  try {
+    const data = await client.fetch(benefitSectionsQuery)
+    if (data && data.length > 0) {
+      console.log(`✅ Fetched ${data.length} benefit sections from Sanity`)
+    }
+    return data
+  } catch (error) {
+    console.error('❌ Error fetching benefit sections:', error)
+    return null
+  }
 }
 
 // Target market functions
