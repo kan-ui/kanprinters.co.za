@@ -4,12 +4,6 @@ export default defineType({
   name: 'contactInfo',
   title: 'Contact Information',
   type: 'document',
-  __experimental_actions: [
-    // 'create',
-    'update',
-    // 'delete',
-    'publish',
-  ],
   fields: [
     defineField({
       name: 'address',
