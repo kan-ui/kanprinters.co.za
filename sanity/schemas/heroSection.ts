@@ -74,6 +74,7 @@ export default defineType({
       title: 'Trust Line',
       type: 'string',
       description: 'Text below hero (e.g., "From Manenberg to Lansdowne")',
+      initialValue: 'From a family garage in Manenberg to a trusted printing hub in Lansdowne • Rooted in craftsmanship, loyalty, and community trust',
     }),
   ],
   preview: {
