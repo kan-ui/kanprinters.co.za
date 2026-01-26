@@ -4,12 +4,6 @@ export default defineType({
   name: 'companyHistory',
   title: 'Company History',
   type: 'document',
-  __experimental_actions: [
-    // 'create',
-    'update',
-    // 'delete',
-    'publish',
-  ],
   fields: [
     defineField({
       name: 'foundingStory',
