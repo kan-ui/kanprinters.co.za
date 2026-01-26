@@ -14,6 +14,13 @@ import {
   heroSectionQuery,
   companyHistoryQuery,
   ctaSectionQuery,
+  benefitSectionsQuery,
+  targetMarketsQuery,
+  sectionContentQuery,
+  allSectionContentQuery,
+  videoContentQuery,
+  allVideoContentQuery,
+  futureVisionQuery,
 } from './sanity.queries'
 
 // Service functions
@@ -82,4 +89,37 @@ export async function getCompanyHistory() {
 // CTA section functions
 export async function getCTASection() {
   return await client.fetch(ctaSectionQuery)
+}
+
+// Benefit section functions
+export async function getBenefitSections() {
+  return await client.fetch(benefitSectionsQuery)
+}
+
+// Target market functions
+export async function getTargetMarkets() {
+  return await client.fetch(targetMarketsQuery)
+}
+
+// Section content functions
+export async function getSectionContent(sectionId: string) {
+  return await client.fetch(sectionContentQuery, { sectionId })
+}
+
+export async function getAllSectionContent() {
+  return await client.fetch(allSectionContentQuery)
+}
+
+// Video content functions
+export async function getVideoContent(section: string) {
+  return await client.fetch(videoContentQuery, { section })
+}
+
+export async function getAllVideoContent() {
+  return await client.fetch(allVideoContentQuery)
+}
+
+// Future vision functions
+export async function getFutureVision() {
+  return await client.fetch(futureVisionQuery)
 }
