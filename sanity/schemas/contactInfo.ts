@@ -11,24 +11,28 @@ export default defineType({
       type: 'object',
       fields: [
         {
-          name: 'street',
-          title: 'Street Address',
-          type: 'string',
-        },
-        {
           name: 'unit',
           title: 'Unit/Floor',
           type: 'string',
+          initialValue: 'Unit 14 Regency Park',
+        },
+        {
+          name: 'street',
+          title: 'Street Address',
+          type: 'string',
+          initialValue: '6 Induland Crescent',
         },
         {
           name: 'suburb',
           title: 'Suburb',
           type: 'string',
+          initialValue: 'Lansdowne',
         },
         {
           name: 'city',
           title: 'City',
           type: 'string',
+          initialValue: 'Cape Town',
         },
         {
           name: 'postalCode',
@@ -53,11 +57,13 @@ export default defineType({
           title: 'Primary Phone',
           type: 'string',
           description: 'Main contact number',
+          initialValue: '021 691 0170',
         },
         {
           name: 'secondary',
           title: 'Secondary Phone',
           type: 'string',
+          initialValue: '021 691 0168',
         },
         {
           name: 'voip',
@@ -73,6 +79,7 @@ export default defineType({
       title: 'Email Address',
       type: 'string',
       validation: (Rule) => Rule.email(),
+      initialValue: 'kanprinters@mweb.co.za',
     }),
     defineField({
       name: 'contactPersons',
