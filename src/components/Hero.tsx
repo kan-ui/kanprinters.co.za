@@ -1,30 +1,57 @@
+import React from "react";
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import heroImg from "../../public/img/hero.png";
 import { ServicesCarousel } from "@/components/ServicesCarousel";
+import { urlFor } from "@/lib/sanity.image";
 
-export const Hero = () => {
+interface HeroProps {
+  heroData?: {
+    headline?: string;
+    description?: string;
+    primaryCTA?: { text?: string; link?: string };
+    secondaryCTA?: { text?: string; link?: string };
+    heroImage?: any;
+    trustLine?: string;
+  };
+}
+
+export const Hero = ({ heroData }: HeroProps) => {
+  const headline = heroData?.headline || "Transform Ideas Into Lasting Impressions";
+  const description = heroData?.description || "Creative, reliable, high-quality printing solutions.\nEmpowering clients, uplifting communities, honouring craftsmanship.";
+  const primaryCTA = heroData?.primaryCTA || { text: "Get Free Quotation", link: "mailto:kanprinters@mweb.co.za" };
+  const secondaryCTA = heroData?.secondaryCTA || { text: "Call Us: 021 691 0170", link: "tel:+27216910170" };
+  const trustLine = heroData?.trustLine || "From a family garage in Manenberg to a trusted printing hub in Lansdowne • Rooted in craftsmanship, loyalty, and community trust";
+  
+  const heroImageSrc = heroData?.heroImage 
+    ? urlFor(heroData.heroImage).width(616).height(617).url()
+    : heroImg;
+
   return (
     <>
       <Container className="flex flex-wrap ">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8 px-4 lg:px-0">
             <h1 className="text-3xl sm:text-4xl font-bold leading-snug tracking-tight text-gray-900 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
-              Transform Ideas Into Lasting Impressions
+              {headline}
             </h1>
             <p className="py-5 text-lg sm:text-xl leading-relaxed text-gray-600 lg:text-xl xl:text-2xl dark:text-gray-300">
-              Creative, reliable, high-quality printing solutions.<br className="hidden sm:block" />
-              Empowering clients, uplifting communities, honouring craftsmanship.
+              {description.split('\n').map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  {i < description.split('\n').length - 1 && <br className="hidden sm:block" />}
+                </React.Fragment>
+              ))}
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
               <a
-                href="mailto:kanprinters@mweb.co.za"
+                href={primaryCTA.link || "mailto:kanprinters@mweb.co.za"}
                 className="px-8 py-4 text-lg font-bold text-center text-white bg-indigo-600 rounded-md shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-200 transform hover:scale-105 min-w-[200px] sm:min-w-0">
-                Get Free Quotation
+                {primaryCTA.text || "Get Free Quotation"}
               </a>
               <a
-                href="tel:+27216910170"
+                href={secondaryCTA.link || "tel:+27216910170"}
                 className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors py-4">
                 <svg
                   className="w-5 h-5"
@@ -39,7 +66,7 @@ export const Hero = () => {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span className="font-medium">Call Us: 021 691 0170</span>
+                <span className="font-medium">{secondaryCTA.text || "Call Us: 021 691 0170"}</span>
               </a>
             </div>
           </div>
@@ -48,13 +75,13 @@ export const Hero = () => {
           <div className="relative w-full max-w-lg">
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 to-blue-100 dark:from-indigo-900/20 dark:to-blue-900/20 rounded-3xl blur-3xl opacity-50"></div>
             <Image
-              src={heroImg}
+              src={heroImageSrc}
               width="616"
               height="617"
               className="relative object-cover rounded-2xl shadow-2xl"
               alt="Professional printing services"
               loading="eager"
-              placeholder="blur"
+              placeholder={heroData?.heroImage ? undefined : "blur"}
             />
           </div>
         </div>
@@ -62,8 +89,17 @@ export const Hero = () => {
       <Container>
         <div className="flex flex-col justify-center">
           <div className="text-lg md:text-xl text-center text-gray-700 dark:text-white mb-6 md:mb-8 px-4">
-            From a family garage in <span className="text-indigo-600 font-semibold">Manenberg</span> to a trusted printing hub in <span className="text-indigo-600 font-semibold">Lansdowne</span>{" "}
-            • Rooted in craftsmanship, loyalty, and community trust
+            {trustLine.includes('Manenberg') && trustLine.includes('Lansdowne') ? (
+              <>
+                {trustLine.split('Manenberg')[0]}
+                <span className="text-indigo-600 font-semibold">Manenberg</span>
+                {trustLine.split('Manenberg')[1]?.split('Lansdowne')[0]}
+                <span className="text-indigo-600 font-semibold">Lansdowne</span>
+                {trustLine.split('Lansdowne')[1]}
+              </>
+            ) : (
+              trustLine
+            )}
           </div>
 
           <div className="px-4">
