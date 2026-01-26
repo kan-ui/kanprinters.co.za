@@ -9,16 +9,19 @@ export default defineType({
       name: 'facebook',
       title: 'Facebook URL',
       type: 'url',
+      initialValue: 'https://www.facebook.com/pages/Kan-Screenprinters/512399395488737',
     }),
     defineField({
       name: 'twitter',
       title: 'Twitter/X URL',
       type: 'url',
+      initialValue: 'https://twitter.com/@kanscreen',
     }),
     defineField({
       name: 'linkedin',
       title: 'LinkedIn URL',
       type: 'url',
+      initialValue: 'http://za.linkedin.com/pub/kan-printers/4a/b50/a0b',
     }),
     defineField({
       name: 'instagram',
