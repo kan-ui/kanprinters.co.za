@@ -44,7 +44,8 @@ export const Testimonials = ({ testimonialsData }: TestimonialsProps) => {
     ? testimonialsData.map((t: any) => ({
         quote: t.quote,
         author: t.author,
-        role: t.role || t.company || "",
+        role: t.role || "",
+        company: t.company || "",
         image: t.image?.asset ? urlFor(t.image).width(40).height(40).url() : userOneImg,
       }))
     : defaultTestimonials;
@@ -62,6 +63,7 @@ export const Testimonials = ({ testimonialsData }: TestimonialsProps) => {
                 image={testimonial.image}
                 name={testimonial.author}
                 title={testimonial.role}
+                company={testimonial.company}
               />
             </div>
           </div>
@@ -75,6 +77,7 @@ interface AvatarProps {
   image: any;
   name: string;
   title: string;
+  company?: string;
 }
 
 function Avatar(props: Readonly<AvatarProps>) {
@@ -92,6 +95,9 @@ function Avatar(props: Readonly<AvatarProps>) {
       <div>
         <div className="text-lg font-medium">{props.name}</div>
         <div className="text-gray-600 dark:text-gray-400">{props.title}</div>
+        {props.company && (
+          <div className="text-gray-500 dark:text-gray-500 text-sm mt-0.5">{props.company}</div>
+        )}
       </div>
     </div>
   );
