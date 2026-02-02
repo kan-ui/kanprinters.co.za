@@ -9,6 +9,7 @@ export const Navbar = () => {
     "Services",
     "Portfolio",
     "About",
+    "Testimonials",
     "Contact",
     "FAQ",
   ];
@@ -33,7 +34,7 @@ export const Navbar = () => {
         <div className="gap-3 nav__item mr-2 lg:flex ml-auto lg:ml-0 lg:order-2">
             <ThemeChanger />
             <div className="hidden mr-3 lg:flex nav__item">
-              <Link href="mailto:kanprinters@mweb.co.za" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5 hover:bg-indigo-700 transition-colors">
+              <Link href="/quote" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5 hover:bg-indigo-700 transition-colors">
                 Get Quote
               </Link>
             </div>
@@ -76,13 +77,16 @@ export const Navbar = () => {
                     <Link href="/#about" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
                         About
                     </Link>
+                    <Link href="/testimonials" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
+                        Testimonials
+                    </Link>
                     <Link href="/#contact" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
                         Contact
                     </Link>
                     <Link href="/#faq" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
                         FAQ
                     </Link>
-                    <Link href="mailto:kanprinters@mweb.co.za" className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5 hover:bg-indigo-700 transition-colors">         
+                    <Link href="/quote" className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5 hover:bg-indigo-700 transition-colors">         
                         Get Quote
                     </Link>
                   </>
@@ -106,12 +110,17 @@ export const Navbar = () => {
             </li>
             <li className="mr-3 nav__item">
               <Link href="/#about" className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
-                  About
+                About
+              </Link>
+            </li>
+            <li className="mr-3 nav__item">
+              <Link href="/testimonials" className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
+                Testimonials
               </Link>
             </li>
             <li className="mr-3 nav__item">
               <Link href="/#contact" className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
-                  Contact
+                Contact
               </Link>
             </li>
             <li className="mr-3 nav__item">
