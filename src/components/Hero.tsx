@@ -33,7 +33,7 @@ export const Hero = ({ heroData }: HeroProps) => {
       <Container className="flex flex-wrap ">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8 px-4 lg:px-0">
-            <h1 className="text-3xl sm:text-4xl font-bold leading-snug tracking-tight text-gray-900 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+            <h1 className="font-display text-3xl sm:text-4xl font-bold leading-snug tracking-tight text-gray-900 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
               {headline}
             </h1>
             <p className="py-5 text-lg sm:text-xl leading-relaxed text-gray-600 lg:text-xl xl:text-2xl dark:text-gray-300">
