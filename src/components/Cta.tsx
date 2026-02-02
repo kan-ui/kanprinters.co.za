@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Container } from "@/components/Container";
 
 interface CtaProps {
@@ -28,12 +29,12 @@ export const Cta = ({ ctaData }: CtaProps) => {
           </p>
         </div>
         <div className="flex flex-col flex-shrink-0 w-full gap-3 text-center lg:w-auto lg:flex-row">
-          <a
-            href={primaryCTA.link || "mailto:kanprinters@mweb.co.za"}
+          <Link
+            href="/quote"
             className="inline-block py-3 mx-auto text-lg font-bold text-center text-white bg-indigo-700 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-indigo-800 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
           >
             {primaryCTA.text || "Get Free Quote"}
-          </a>
+          </Link>
           <a
             href={secondaryCTA.link || "tel:+27216910170"}
             className="inline-block py-3 mx-auto text-lg font-medium text-center text-white border-2 border-white/80 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-white/10 hover:border-white transition-colors"
