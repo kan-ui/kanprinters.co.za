@@ -81,6 +81,10 @@ interface AvatarProps {
 }
 
 function Avatar(props: Readonly<AvatarProps>) {
+  // Check if image is a Sanity URL (external URL) or static import
+  const isSanityImage = typeof props.image === 'string' && (props.image.startsWith('http') || props.image.startsWith('//'));
+  const isStaticImport = typeof props.image === 'object' && 'src' in props.image;
+  
   return (
     <div className="flex items-center mt-8 space-x-3">
       <div className="flex-shrink-0 overflow-hidden rounded-full w-14 h-14">
@@ -89,7 +93,8 @@ function Avatar(props: Readonly<AvatarProps>) {
           width="40"
           height="40"
           alt="Avatar"
-          placeholder="blur"
+          placeholder={isStaticImport ? "blur" : undefined}
+          blurDataURL={isStaticImport && 'blurDataURL' in props.image ? props.image.blurDataURL : undefined}
         />
       </div>
       <div>
