@@ -35,102 +35,93 @@ export default function QuotePage() {
     setIsError(false);
     setIsSuccess(false);
 
-    try {
-      // Try server-side API first
-      const response = await fetch("/api/quote", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        setIsSuccess(true);
-        // Show message even if it contains email fallback note
-        if (result.message && result.message.includes('email')) {
-          setErrorMessage(result.message);
-        }
-        reset();
-        // Scroll to success message
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }, 100);
-      } else {
-        // If server-side fails, try client-side Web3Forms as fallback
-        console.log('Server-side failed, trying client-side submission...');
-        await submitClientSide(data);
-      }
-    } catch (error) {
-      // Try client-side as fallback
-      console.log('Error occurred, trying client-side submission...');
-      try {
-        await submitClientSide(data);
-      } catch (clientError) {
-        setIsError(true);
-        setErrorMessage("Unable to submit form. Please email us directly at kanprinters@mweb.co.za with your quote details.");
-        console.error("Quote submission error:", error, clientError);
-      }
-    }
-  };
-
-  const submitClientSide = async (data: QuoteFormData) => {
-    // Client-side submission bypasses Cloudflare
-    const web3formsAccessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '1971af10-b447-47c8-ba14-60b45e95890e';
+    // Submit directly from client-side (like PopupWidget does)
+    // This bypasses Cloudflare blocking
+    const web3formsAccessKey = '1971af10-b447-47c8-ba14-60b45e95890e';
     
-    // Create email content
-    const emailContent = `
+    // Format the message content
+    const messageContent = `
 New Quote Request - Kan Printers & Signs
 
-Contact Information:
+CONTACT INFORMATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Name: ${data.name}
 Email: ${data.email}
 Phone: ${data.phone}
 ${data.company ? `Company: ${data.company}` : ''}
 
-Project Details:
+PROJECT DETAILS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Service Type: ${data.serviceType}
-Description: ${data.description}
 Quantity: ${data.quantity} units
-${data.deadline ? `Deadline: ${data.deadline}` : ''}
-${data.additionalNotes ? `Additional Notes: ${data.additionalNotes}` : ''}
+${data.deadline ? `Desired Deadline: ${new Date(data.deadline).toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' })}` : ''}
+
+Description:
+${data.description}
+
+${data.additionalNotes ? `Additional Notes:\n${data.additionalNotes}` : ''}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This quote request was submitted from the Kan Printers website.
     `;
 
-    const web3formsData = {
+    // Web3Forms format - use 'access_key' for API calls
+    // Note: Configure recipient emails in Web3Forms dashboard for this access key
+    const web3formsData: any = {
       access_key: web3formsAccessKey,
       subject: `New Quote Request: ${data.serviceType} - ${data.name}`,
-      from_name: 'Kan Printers Quote Form',
+      from_name: data.name,
       email: data.email,
-      name: data.name,
+      // Set recipients (comma-separated)
       to: 'info@kanprinters.co.za,mario@kanprinters.co.za',
-      message: emailContent,
+      message: messageContent,
+      // Bot check (required by Web3Forms - must be false or checkbox)
+      botcheck: false,
+      // Additional custom fields
       service_type: data.serviceType,
       quantity: data.quantity,
       phone: data.phone,
-      company: data.company || 'N/A',
+      company: data.company || 'Not provided',
+      deadline: data.deadline || 'Not specified',
     };
 
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(web3formsData),
-    });
+    try {
+      console.log('Submitting quote request to Web3Forms...');
+      console.log('Data being sent:', { ...web3formsData, apikey: '***hidden***' });
+      
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(web3formsData),
+      });
 
-    const result = await response.json();
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Web3Forms HTTP error:', response.status, errorText.substring(0, 200));
+        throw new Error(`HTTP ${response.status}: ${errorText.substring(0, 100)}`);
+      }
 
-    if (result.success) {
-      setIsSuccess(true);
-      reset();
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 100);
-    } else {
-      throw new Error(result.message || 'Client-side submission failed');
+      const result = await response.json();
+      console.log('Web3Forms response:', result);
+
+      if (result.success) {
+        setIsSuccess(true);
+        reset();
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
+      } else {
+        setIsError(true);
+        setErrorMessage(result.message || 'Failed to submit quote request. Please try again or email us directly at kanprinters@mweb.co.za');
+        console.error('Web3Forms returned error:', result);
+      }
+    } catch (error: any) {
+      setIsError(true);
+      setErrorMessage(`Error: ${error.message}. Please email us directly at kanprinters@mweb.co.za with your quote details.`);
+      console.error('Quote submission error:', error);
     }
   };
 
