@@ -88,19 +88,19 @@ export default async function Home() {
   const servicesSectionData = servicesSection || {
     preTitle: "Our Services",
     title: "Complete Printing & Branding Solutions",
-    description: "We blend traditional screen-printing expertise with modern digital technologies. From creative design to final production, we handle any printing job with precision, craftsmanship, and quality. Contact us for a free quotation tailored to your needs.",
+    description: "Bold colors. Brilliant designs. Unforgettable impressions. We're not just printers—we're your creative partners in making brands come alive! With vibrant inks, cutting-edge technology, and a passion for perfection, we turn every project into a masterpiece. From dazzling screen prints that pop off the page to stunning digital graphics that wow your audience, we bring energy, excitement, and excellence to every job. Let's make your brand impossible to ignore!",
   };
 
   const targetMarketsSectionData = targetMarketsSection || {
     preTitle: "Who We Serve",
     title: "Serving Diverse Markets with Inclusivity",
-    description: "We believe in inclusivity and accessibility—serving corporates, communities, and individuals equally. Our commitment to empowerment through customization means every client co-creates their products.",
+    description: "Every brand deserves to shine in full color—and we make it happen! From Fortune 500 giants to local startups, from school events to community celebrations, we bring the same vibrant energy and top-tier quality to every project. No matter your size, budget, or vision, you're not just a client—you're a creative collaborator. Together, we'll design, print, and deliver products that burst with personality and make your brand unforgettable. Your story, your colors, your way—that's the Kan Printers promise!",
   };
 
   const valuesSectionData = valuesSection || {
     preTitle: "Our Values",
     title: "Brand Identity & Core Values",
-    description: "Our reputation, built since 2000, is founded on consistent quality, trust, and reliability. We are a community-centred partner with strong ties to schools, religious institutions, and local events.",
+    description: "For over two decades, we've painted Cape Town with vibrant colors, bold designs, and unforgettable brand experiences! Our reputation isn't just built on trust—it's built on passion, precision, and the pure joy of bringing your wildest creative visions to life. We're not just printers; we're color enthusiasts, design fanatics, and your partners in making every project a masterpiece. From corporate powerhouses to community celebrations, we bring the same electric energy and unwavering commitment to excellence. Quality that dazzles, service that wows, and results that make you proud—that's the Kan Printers way!",
   };
 
   const portfolioSectionData = portfolioSection || {
@@ -167,7 +167,7 @@ export default async function Home() {
           preTitle={servicesSectionData.preTitle || "Our Services"}
           title={servicesSectionData.title || "Complete Printing & Branding Solutions"}
         >
-          {servicesSectionData.description || "We blend traditional screen-printing expertise with modern digital technologies. From creative design to final production, we handle any printing job with precision, craftsmanship, and quality. Contact us for a free quotation tailored to your needs."}
+          {servicesSectionData.description || "Bold colors. Brilliant designs. Unforgettable impressions. We're not just printers—we're your creative partners in making brands come alive! With vibrant inks, cutting-edge technology, and a passion for perfection, we turn every project into a masterpiece. From dazzling screen prints that pop off the page to stunning digital graphics that wow your audience, we bring energy, excitement, and excellence to every job. Let's make your brand impossible to ignore!"}
         </SectionTitle>
 
         {benefitSections && benefitSections.length > 0 ? (
@@ -191,7 +191,7 @@ export default async function Home() {
           preTitle={targetMarketsSectionData.preTitle || "Who We Serve"}
           title={targetMarketsSectionData.title || "Serving Diverse Markets with Inclusivity"}
         >
-          {targetMarketsSectionData.description || "We believe in inclusivity and accessibility—serving corporates, communities, and individuals equally. Our commitment to empowerment through customization means every client co-creates their products."}
+          {targetMarketsSectionData.description || "Every brand deserves to shine in full color—and we make it happen! From Fortune 500 giants to local startups, from school events to community celebrations, we bring the same vibrant energy and top-tier quality to every project. No matter your size, budget, or vision, you're not just a client—you're a creative collaborator. Together, we'll design, print, and deliver products that burst with personality and make your brand unforgettable. Your story, your colors, your way—that's the Kan Printers promise!"}
         </SectionTitle>
 
         <Container className="mt-8">
@@ -211,7 +211,7 @@ export default async function Home() {
           preTitle={valuesSectionData.preTitle || "Our Values"}
           title={valuesSectionData.title || "Brand Identity & Core Values"}
         >
-          {valuesSectionData.description || "Our reputation, built since 2000, is founded on consistent quality, trust, and reliability. We are a community-centred partner with strong ties to schools, religious institutions, and local events."}
+          {valuesSectionData.description || "For over two decades, we've painted Cape Town with vibrant colors, bold designs, and unforgettable brand experiences! Our reputation isn't just built on trust—it's built on passion, precision, and the pure joy of bringing your wildest creative visions to life. We're not just printers; we're color enthusiasts, design fanatics, and your partners in making every project a masterpiece. From corporate powerhouses to community celebrations, we bring the same electric energy and unwavering commitment to excellence. Quality that dazzles, service that wows, and results that make you proud—that's the Kan Printers way!"}
         </SectionTitle>
 
         <Container className="mt-8">
