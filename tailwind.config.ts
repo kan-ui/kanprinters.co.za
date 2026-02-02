@@ -18,7 +18,8 @@ const config: Config = {
       },
     },
     fontFamily: {
-      sans: ["Inter", ...defaultTheme.fontFamily.sans],
+      sans: ["var(--font-sans)", "Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
+      display: ["var(--font-display)", "Playfair Display", "serif"],
       stock: [defaultTheme.fontFamily.sans],
     },
   },
