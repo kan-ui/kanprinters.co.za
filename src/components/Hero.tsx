@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/Container";
 import heroImg from "../../public/img/hero.png";
 import { ServicesCarousel } from "@/components/ServicesCarousel";
@@ -45,11 +46,11 @@ export const Hero = ({ heroData }: HeroProps) => {
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
-              <a
-                href={primaryCTA.link || "mailto:kanprinters@mweb.co.za"}
+              <Link
+                href="/quote"
                 className="px-8 py-4 text-lg font-bold text-center text-white bg-indigo-600 rounded-md shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-200 transform hover:scale-105 min-w-[200px] sm:min-w-0">
                 {primaryCTA.text || "Get Free Quotation"}
-              </a>
+              </Link>
               <a
                 href={secondaryCTA.link || "tel:+27216910170"}
                 className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors py-4">
