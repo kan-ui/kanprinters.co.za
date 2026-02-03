@@ -73,7 +73,7 @@ This quote request was submitted from the Kan Printers website.
       from_name: data.name,
       email: data.email,
       // Set recipients (comma-separated)
-      to: 'info@kanprinters.co.za,mario@kanprinters.co.za',
+      to: 'mario@kanprinters.co.za',
       message: messageContent,
       // Bot check (required by Web3Forms - must be false or checkbox)
       botcheck: false,
