@@ -123,8 +123,8 @@ export default async function Home() {
 
   const futureVisionSectionData = futureVisionSection || {
     preTitle: "Future Vision",
-    title: "Looking Ahead (2–5 Years)",
-    description: "We're committed to continuous innovation and growth, blending automation with artisanal craftsmanship while maintaining our core values of quality, dignity, and community partnership.",
+    title: "Where We're Headed",
+    description: "The future of print is bright—and we're leading the way! We're investing in smarter tech, greener inks, and even more ways to bring your boldest ideas to life. Think digital ordering, creative studio services, and a showroom where you can co-design in full color. We're doubling down on what we do best: vibrant, high-impact printing that wows—while staying true to our roots in quality, community, and partnership. The best is yet to come!",
   };
 
   const faqSectionData = faqSection || {
@@ -328,9 +328,9 @@ export default async function Home() {
       <div className="scroll-mt-20 mt-16">
         <SectionTitle
           preTitle={futureVisionSectionData.preTitle || "Future Vision"}
-          title={futureVisionSectionData.title || "Looking Ahead (2–5 Years)"}
+          title={futureVisionSectionData.title || "Where We're Headed"}
         >
-          {futureVisionSectionData.description || "We're committed to continuous innovation and growth, blending automation with artisanal craftsmanship while maintaining our core values of quality, dignity, and community partnership."}
+          {futureVisionSectionData.description || "The future of print is bright—and we're leading the way! We're investing in smarter tech, greener inks, and even more ways to bring your boldest ideas to life. Think digital ordering, creative studio services, and a showroom where you can co-design in full color. We're doubling down on what we do best: vibrant, high-impact printing that wows—while staying true to our roots in quality, community, and partnership. The best is yet to come!"}
         </SectionTitle>
 
         <Container className="mt-8">
@@ -358,7 +358,7 @@ export default async function Home() {
                   <ul className="space-y-3 text-gray-600 dark:text-gray-300">
                     <li className="flex items-start">
                       <span className="text-indigo-600 mr-2">•</span>
-                      <span>Hybrid Production Model: Blend automation with artisanal craftsmanship</span>
+                      <span>Hybrid Production Model: Smart automation meets hands-on quality</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-indigo-600 mr-2">•</span>
