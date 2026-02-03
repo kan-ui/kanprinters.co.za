@@ -124,7 +124,7 @@ export default async function Home() {
   const futureVisionSectionData = futureVisionSection || {
     preTitle: "Future Vision",
     title: "Where We're Headed",
-    description: "The future of print is bright—and we're leading the way! We're investing in smarter tech, greener inks, and even more ways to bring your boldest ideas to life. Think digital ordering, creative studio services, and a showroom where you can co-design in full color. We're doubling down on what we do best: vibrant, high-impact printing that wows—while staying true to our roots in quality, community, and partnership. The best is yet to come!",
+    description: "The future is bursting with color—and Kan Printers is painting it! We're revolutionizing print with cutting-edge tech, eco-friendly inks that pop, and game-changing innovations that turn your wildest visions into reality. Imagine ordering online with a click, collaborating in our vibrant creative studio, and walking through a showroom where every wall screams possibility! We're not just keeping up—we're setting the pace. Bigger, bolder, brighter—that's our promise. The canvas is ready, and we're bringing the paint!",
   };
 
   const faqSectionData = faqSection || {
@@ -330,7 +330,7 @@ export default async function Home() {
           preTitle={futureVisionSectionData.preTitle || "Future Vision"}
           title={futureVisionSectionData.title || "Where We're Headed"}
         >
-          {futureVisionSectionData.description || "The future of print is bright—and we're leading the way! We're investing in smarter tech, greener inks, and even more ways to bring your boldest ideas to life. Think digital ordering, creative studio services, and a showroom where you can co-design in full color. We're doubling down on what we do best: vibrant, high-impact printing that wows—while staying true to our roots in quality, community, and partnership. The best is yet to come!"}
+          {futureVisionSectionData.description || "The future is bursting with color—and Kan Printers is painting it! We're revolutionizing print with cutting-edge tech, eco-friendly inks that pop, and game-changing innovations that turn your wildest visions into reality. Imagine ordering online with a click, collaborating in our vibrant creative studio, and walking through a showroom where every wall screams possibility! We're not just keeping up—we're setting the pace. Bigger, bolder, brighter—that's our promise. The canvas is ready, and we're bringing the paint!"}
         </SectionTitle>
 
         <Container className="mt-8">
