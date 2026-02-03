@@ -181,7 +181,7 @@ This email was sent from the Kan Printers quote request form.
       email: data.email,
       name: data.name,
       // Send to multiple recipients
-      to: 'info@kanprinters.co.za,mario@kanprinters.co.za',
+      to: 'mario@kanprinters.co.za',
       // Custom email content
       html: emailHtml,
       text: emailText,
