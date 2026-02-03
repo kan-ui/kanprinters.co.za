@@ -3,7 +3,60 @@ import Image from "next/image";
 import React from "react";
 import { Container } from "@/components/Container";
 
-export function Footer() {
+type ContactInfo = {
+  address?: {
+    unit?: string;
+    street?: string;
+    suburb?: string;
+    city?: string;
+    postalCode?: string;
+    country?: string;
+  };
+  phone?: {
+    primary?: string;
+    secondary?: string;
+    voip?: string[];
+  };
+  email?: string;
+} | null;
+
+type SocialMedia = {
+  facebook?: string;
+  tiktok?: string;
+  linkedin?: string;
+  instagram?: string;
+  youtube?: string;
+  whatsapp?: string;
+} | null;
+
+interface FooterProps {
+  contactInfo?: ContactInfo;
+  socialMedia?: SocialMedia;
+}
+
+export function Footer({ contactInfo, socialMedia }: FooterProps) {
+  const address = contactInfo?.address;
+  const phone = contactInfo?.phone;
+  const email = contactInfo?.email ?? "kanprinters@mweb.co.za";
+
+  const addressLines = [
+    address?.unit,
+    address?.street,
+    address?.suburb,
+    address?.city,
+    address?.postalCode,
+    address?.country,
+  ].filter(Boolean) as string[];
+
+  const primaryPhone = phone?.primary ?? "021 691 0170";
+  const secondaryPhone = phone?.secondary ?? "021 691 0168";
+  const voipNumbers = phone?.voip?.filter(Boolean) ?? ["021 007 1004", "087 701 2066"];
+
+  const facebookUrl = socialMedia?.facebook ?? "https://www.facebook.com/pages/Kan-Screenprinters/512399395488737";
+  const tiktokUrl = socialMedia?.tiktok ?? "https://www.tiktok.com/@kanscreen";
+  const linkedinUrl = socialMedia?.linkedin ?? "http://za.linkedin.com/pub/kan-printers/4a/b50/a0b";
+  const whatsappUrl = socialMedia?.whatsapp?.startsWith("http") ? socialMedia.whatsapp : `https://wa.me/${(socialMedia?.whatsapp ?? "27216910170").replace(/\D/g, "")}`;
+
   return (
     <div className="relative">
       <Container>
@@ -35,12 +88,16 @@ export function Footer() {
             
             <div className="max-w-md mt-4 text-sm text-gray-500 dark:text-gray-400">
               <p className="font-semibold mb-2">Contact Us:</p>
-              <p>Unit 14 Regency Park</p>
-              <p>6 Induland Crescent, Lansdowne</p>
-              <p>Cape Town</p>
-              <p className="mt-2">Tel: 021 691 0170 / 021 691 0168</p>
-              <p>VOIP: 021 007 1004 / 087 701 2066</p>
-              <p>Email: <a href="mailto:kanprinters@mweb.co.za" className="text-indigo-600 hover:underline">kanprinters@mweb.co.za</a></p>
+              {addressLines.length > 0 ? addressLines.map((line, i) => <p key={i}>{line}</p>) : (
+                <>
+                  <p>Unit 14 Regency Park</p>
+                  <p>6 Induland Crescent, Lansdowne</p>
+                  <p>Cape Town</p>
+                </>
+              )}
+              <p className="mt-2">Tel: {primaryPhone}{secondaryPhone ? ` / ${secondaryPhone}` : ""}</p>
+              {voipNumbers.length > 0 && <p>VOIP: {voipNumbers.join(" / ")}</p>}
+              <p>Email: <a href={`mailto:${email}`} className="text-indigo-600 hover:underline">{email}</a></p>
             </div>
 
             <div className="mt-5">
@@ -122,42 +179,30 @@ export function Footer() {
           <div className="">
             <div>Follow us</div>
             <div className="flex mt-5 space-x-5 text-gray-400 dark:text-gray-500">
-              <a
-                href="https://www.tiktok.com/@kanscreen"
-                target="_blank"
-                rel="noopener"
-                aria-label="TikTok"
-              >
-                <span className="sr-only">TikTok</span>
-                <TikTok />
-              </a>
-              <a
-                href="https://www.facebook.com/pages/Kan-Screenprinters/512399395488737"
-                target="_blank"
-                rel="noopener"
-                aria-label="Facebook"
-              >
-                <span className="sr-only">Facebook</span>
-                <Facebook />
-              </a>
-              <a
-                href="http://za.linkedin.com/pub/kan-printers/4a/b50/a0b"
-                target="_blank"
-                rel="noopener"
-                aria-label="LinkedIn"
-              >
-                <span className="sr-only">Linkedin</span>
-                <Linkedin />
-              </a>
-              <a
-                href="https://wa.me/27216910170"
-                target="_blank"
-                rel="noopener"
-                aria-label="WhatsApp"
-              >
-                <span className="sr-only">WhatsApp</span>
-                <WhatsApp />
-              </a>
+              {tiktokUrl && (
+                <a href={tiktokUrl} target="_blank" rel="noopener" aria-label="TikTok">
+                  <span className="sr-only">TikTok</span>
+                  <TikTok />
+                </a>
+              )}
+              {facebookUrl && (
+                <a href={facebookUrl} target="_blank" rel="noopener" aria-label="Facebook">
+                  <span className="sr-only">Facebook</span>
+                  <Facebook />
+                </a>
+              )}
+              {linkedinUrl && (
+                <a href={linkedinUrl} target="_blank" rel="noopener" aria-label="LinkedIn">
+                  <span className="sr-only">Linkedin</span>
+                  <Linkedin />
+                </a>
+              )}
+              {whatsappUrl && (
+                <a href={whatsappUrl} target="_blank" rel="noopener" aria-label="WhatsApp">
+                  <span className="sr-only">WhatsApp</span>
+                  <WhatsApp />
+                </a>
+              )}
             </div>
           </div>
         </div>
